@@ -1,0 +1,32 @@
+{{> header }}
+
+<h1>Showcase Your Property</h1>
+{{#if errors}}
+{{#each errors}}
+<div class="alert alert-danger">
+    {{ this.msg }}
+</div>
+{{/each}}
+{{/if}}
+
+<form id="addProperty" action="/property/add" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" value="{{ name }}" name="name" id="name" required>
+    </div>
+    <div class="form-group">
+        <label for="image">Image:</label>
+        <input type="file" class="form-control" name="images" id="image"  accept=".png,.jpg,.jpeg" required multiple>
+    </div>
+    <div class="form-group">
+        <label for="location">Location:</label>
+        <input type="text" class="form-control" value="{{ location }}" name="location" id="location" required>
+    </div>
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea class="form-control" name="description" id="description" required>{{ description }}</textarea>
+    </div>
+    <button type="submit" class="btn success">Submit</button>
+</form>
+
+{{> footer }}
